@@ -1,0 +1,126 @@
+{# ─────────── templates/portfolio.html ─────────── #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio Maker Website</title>
+
+  <!-- CSS & fonts -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets1/style.css') }}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+    rel="stylesheet" -->
+  <!-- Font Awesome CDN (latest and complete) -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-4oVGM+bbpWEx4CbmZwHqRoD8aYHyxhk0fZ92B/FBLu9y5yYh0w2EG6A9Qy+m2uEuDwFg3tP9DkqvJ+0ee3SCA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-4oVGM+bbpWEx4CbmZwHqRoD8aYHyxhk0fZ92B/FBLu9y5yYh0w2EG6A9Qy+m2uEuDwFg3tP9DkqvJ+0ee3SCA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+  <main class="wrapper">
+    <!-- ───── LEFT SIDE ───── -->
+    <section class="intro">
+      <span class="section-number">01</span>
+
+      <h1 class="name">{{ dname }} {{ dlname }}</h1>
+
+      <p class="bio">Hi my Name is {{dname}} {{dlname}}.{{ dabout }}</p>
+
+        <div class="social-links">
+          <!-- Email -->
+          <a href="mailto:{{ demail }}" aria-label="Email">
+            <img src="{{ url_for('static', filename='gmail.png') }}" alt="gmail" width="30" />
+          </a>
+        
+          <!-- LinkedIn -->
+          <a href="{{ link }}" target="_blank" aria-label="LinkedIn">
+            <img src="{{ url_for('static', filename='linkedin.png') }}" alt="linkedin" width="30" />
+          </a>
+        
+          <!-- GitHub -->
+          <a href="{{ git }}" target="_blank" aria-label="GitHub">
+            <img src="{{ url_for('static', filename='github.png') }}" alt="GitHub" width="30" />
+          </a>
+        
+          <!-- Instagram -->
+          <a href="{{ insta }}" target="_blank">
+            <img src="{{ url_for('static', filename='insta.png') }}" alt="instagram" width="30" />
+          </a>
+          
+        </div>
+
+
+
+
+        <!-- Projects tab -->
+<div class="tab-content" id="projects">
+  <h3>Projects</h3>
+  <ul>
+    {% for proj in [dproj1, dproj2, dproj3] if proj %}
+      <li>{{ proj }}</li>
+    {% endfor %}
+  </ul>
+</div>
+
+<!-- Experience tab -->
+<div class="tab-content" id="experience">
+  <h3>Work Experience</h3>
+  <ul>
+    {% for exp in [dexp1, dexp2, dexp3] if exp %}
+      <li>{{ exp }}</li>
+    {% endfor %}
+  </ul>
+</div>
+
+
+
+    </section>
+
+
+    <!-- ───── RIGHT SIDE ───── -->
+    <section class="card">
+      <!-- If you add photo upload later, change the src -->
+      <img src="static/images/{{img}}" alt="profile-photo" class="profile-pic" />
+  
+
+      <h2 class="card-title">Profile</h2>
+
+      <!-- Tabs -->
+      <nav class="tabs">
+        <button class="tab active" data-tab="study">Study</button>
+        <button class="tab" data-tab="skills">Skills</button>
+        <button class="tab" data-tab="contact">Contact</button>
+      </nav>
+
+      <!-- Study tab -->
+      <div class="tab-content active" id="study">
+        <p><span>School</span>{{ dsch }}</p>
+        <p><span>College</span>{{ dcol }}</p>
+      </div>
+
+      <!-- Skills tab -->
+      <div class="tab-content" id="skills">
+        <ul>
+          {%- for skill in [ds1, ds2, ds3, ds4] if skill %}
+            <li>{{ skill }}</li>
+          {%- endfor %}
+        </ul>
+      </div>
+
+      <!-- Contact tab -->
+      <div class="tab-content" id="contact">
+        <p><span>Phone</span>{{ dph }}</p>
+        <p><span>Email</span><a href="mailto:{{ demail }}">{{demail}}</a></p>
+      </div>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='assets1/script.js') }}"></script>
+</body>
+</html>

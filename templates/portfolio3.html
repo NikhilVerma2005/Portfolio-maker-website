@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{{ dname }} {{ dlname }} | Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fff;
+      color: #111;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 60px 10%;
+      min-height: 100vh;
+    }
+
+    .text-section {
+      flex: 1 1 45%;
+    }
+
+    .text-section h2 {
+      font-family: 'Orbitron', sans-serif;
+      color: #6F00FF;
+      font-size: 3.5rem;
+      line-height: 1.2;
+    }
+
+    .text-section p {
+      margin-top: 10px;
+      font-size: 1rem;
+      color: #444;
+    }
+
+    .socials {
+      margin-top: 25px;
+    }
+
+    .socials a {
+      font-size: 1.3rem;
+      margin-right: 15px;
+      color: #000;
+      text-decoration: none;
+    }
+
+    .image-section {
+      flex: 1 1 45%;
+      text-align: center;
+    }
+
+    .image-section img {
+      width: 90%;
+      max-width: 350px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        padding: 40px 5%;
+      }
+
+      .text-section h2 {
+        font-size: 2.4rem;
+        text-align: center;
+      }
+
+      .text-section, .image-section {
+        flex: 1 1 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <!-- Left Text Content -->
+    <div class="text-section">
+      <p><strong>Hello, my name is</strong></p>
+      <h2>{{ dname }}<br>{{ dlname }}</h2>
+      <p>{{ dabout }}</p>
+
+      <div class="socials">
+        <a href="mailto:{{ demail }}"><i class="fas fa-envelope"></i></a>
+        <a href="tel:{{ dph }}"><i class="fas fa-phone"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+
+    <!-- Right Image -->
+    <div class="image-section">
+      <img src="{{ url_for('static', filename='images/' ~ img) }}" alt="Profile Image">
+    </div>
+  </div>
+</body>
+</html>
